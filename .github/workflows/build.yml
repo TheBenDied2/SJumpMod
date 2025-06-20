@@ -1,5 +1,6 @@
 name: Build Geode Mod
 
+
 on:
   push:
     branches:
@@ -10,21 +11,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
       - name: Install dependencies
         run: sudo apt-get update && sudo apt-get install -y cmake g++ libcurl4-openssl-dev unzip
 
-      - name: Install Geode SDK
+      - name: Install Geode SDK CLI
         run: |
           wget https://github.com/geode-sdk/cli/releases/download/v3.7.0/geode-cli-v3.7.0-linux.zip
+          mkdir -p $HOME/.local/bin
           unzip geode-cli-v3.7.0-linux.zip -d $HOME/.local/bin
           echo "$HOME/.local/bin" >> $GITHUB_PATH
 
       - name: Build mod
         run: geode build
 
-      - name: Upload artifact
+      - name: Upload .geode file
         uses: actions/upload-artifact@v4
         with:
           name: SJumpMod.geode
