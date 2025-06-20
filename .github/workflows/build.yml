@@ -3,8 +3,7 @@ name: Build Geode Mod
 on:
   push:
     branches:
-      - main
-  
+      - main  
 
 jobs:
   build:
@@ -18,7 +17,8 @@ jobs:
 
       - name: Install Geode SDK
         run: |
-          wget https://github.com/geode-sdk/cli/releases/latest/download/geode-linux.tar.gz
+          wget https://github.com/geode-sdk/cli/releases/download/v3.7.0/geode-linux.tar.gz
+          mkdir -p $HOME/.local/bin
           tar -xzf geode-linux.tar.gz -C $HOME/.local/bin
           echo "$HOME/.local/bin" >> $GITHUB_PATH
 
