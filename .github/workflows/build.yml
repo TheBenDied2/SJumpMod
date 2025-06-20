@@ -5,34 +5,26 @@ on:
     branches:
       - main
   pull_request:
-    branches:
-      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v3
 
       - name: Install dependencies
         run: |
-          sudo apt update
-          sudo apt install -y clang make cmake unzip wget
+          sudo apt-get update
+          sudo apt-get install -y build-essential cmake clang unzip wget
 
-      - name: Download Geode CLI v3.7.0 (zip)
+      - name: Download Geode CLI
         run: |
-          wget https://github.com/geode-sdk/cli/releases/download/v3.7.0/geode-cli-v3.7.0-linux.zip -O geode-cli.zip
-          unzip geode-cli.zip
-          chmod +x geode
-          sudo mv geode /usr/local/bin/
+          wget https://github.com/geode-sdk/cli/releases/download/v3.7.0/geode-cli-linux.zip -O geode-cli.zip
+          unzip geode-cli.zip -d geode-cli
+          sudo mv geode-cli/geode /usr/local/bin/
+          chmod +x /usr/local/bin/geode
 
       - name: Build mod
         run: geode build
-
-      - name: Upload .geode artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: mod-geode-file
-          path: build/*.geode
