@@ -1,11 +1,8 @@
 {
   "id": "com.gd.sjump",
-  "name": "SJump Mod",
+  "name": "S Jump Mod",
+  "description": "This Mod Adds The Ability To Jump Over A Letter S.",
   "developer": "TheBenDied2",
-  "description": "This mod allows jumping using the S key.",
   "version": "1.0.0",
-  "geode": "1.0.0",
-  "build": {
-    "cross": false
-  }
+  "geode": ">=0.2.0"
 }
