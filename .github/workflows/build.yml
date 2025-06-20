@@ -32,7 +32,7 @@ jobs:
         run: geode build
 
       - name: Upload .geode artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: mod-geode-file
           path: build/*.geode
