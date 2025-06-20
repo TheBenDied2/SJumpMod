@@ -1,35 +1,30 @@
-name: Build
+name: Build Mod
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
   pull_request:
+    branches: [ main ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+    - uses: actions/checkout@v3
 
-      - name: Install dependencies
-        run: sudo apt-get update && sudo apt-get install -y build-essential cmake unzip
+    - name: Download geode-cli
+      run: |
+        wget https://github.com/geode-sdk/cli/releases/latest/download/geode-cli-linux.zip -O geode-cli.zip
+        unzip geode-cli.zip -d geode-cli
+        chmod +x geode-cli/geode
 
-      - name: Download Geode CLI
-        run: |
-          wget https://github.com/geode-sdk/cli/releases/download/v3.7.0/geode-cli-v3.7.0-linux.zip -O geode-cli.zip
-          unzip geode-cli.zip -d geode-cli
-          chmod +x geode-cli/geode
+    - name: Build mod
+      run: |
+        ./geode-cli/geode build -- --no-cross
 
-      - name: Clean build folder
-        run: rm -rf build
-
-      - name: Build mod
-        run: ./geode-cli/geode build
-
-      - name: Upload .geode file
-        uses: actions/upload-artifact@v4
-        with:
-          name: mod-artifact
-          path: build/*.geode
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: mod-build
+        path: build/
