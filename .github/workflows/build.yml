@@ -5,25 +5,28 @@ on:
     branches:
       - main
   pull_request:
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-      - name: Setup Geode CLI
+      - name: Download Geode CLI
         run: |
-          wget https://github.com/geode-sdk/cli/releases/latest/download/geode-cli-linux.zip -O geode-cli.zip
+          wget https://github.com/geode-sdk/cli/releases/download/v3.8.0/geode-cli-linux.zip -O geode-cli.zip
           unzip geode-cli.zip -d geode-cli
-          sudo mv geode-cli/geode /usr/local/bin/
-          chmod +x /usr/local/bin/geode
+          chmod +x geode-cli/geode
+          sudo mv geode-cli/geode /usr/local/bin/geode
 
       - name: Build mod
         run: geode build
 
-      - name: Upload artifact
+      - name: Upload built mod
         uses: actions/upload-artifact@v4
         with:
           name: sjumpmod
