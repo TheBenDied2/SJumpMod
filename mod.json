@@ -1,8 +1,11 @@
 {
   "id": "com.gd.sjump",
   "name": "S Jump Mod",
-  "description": "This Mod Adds The Ability To Jump Over A Letter S.",
+  "description": "Adds the ability to jump by pressing the S key. A simple mod for alternative controls or practice.",
   "developer": "TheBenDied2",
   "version": "1.0.0",
-  "geode": ">=0.2.0"
+  "geode": ">=0.2.0",
+  "supports": ["windows", "android"],
+  "repository": "https://github.com/yourusername/SJumpMod",
+  "license": "MIT"
 }
