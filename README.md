@@ -1,6 +1,6 @@
 # Мод S Jump Mod
 
-**Автор:** TheBenDied2  
+**Автор:** TheBenDied2 and Danyax
 **ID мода:** com.gd.sjump  
 **Версия:** 1.0.0
 
