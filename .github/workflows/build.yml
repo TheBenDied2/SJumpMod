@@ -18,7 +18,7 @@ jobs:
 
       - name: Download Geode CLI
         run: |
-          wget https://github.com/geode-sdk/cli/releases/download/v3.8.0/geode-cli-linux.zip -O geode-cli.zip
+          wget https://github.com/geode-sdk/cli/releases/latest/download/geode-cli-v3.7.0-linux.zip -O geode-cli.zip
           unzip geode-cli.zip -d geode-cli
           chmod +x geode-cli/geode
           sudo mv geode-cli/geode /usr/local/bin/geode
