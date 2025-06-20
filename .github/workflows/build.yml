@@ -16,7 +16,7 @@ jobs:
       - name: Install dependencies
         run: sudo apt-get update && sudo apt-get install -y cmake g++ libcurl4-openssl-dev unzip make
 
-      - name: Install Geode SDK CLI
+      - name: Install Geode CLI
         run: |
           wget https://github.com/geode-sdk/cli/releases/download/v3.7.0/geode-cli-v3.7.0-linux.zip
           mkdir -p $HOME/.local/bin
@@ -24,7 +24,7 @@ jobs:
           echo "$HOME/.local/bin" >> $GITHUB_PATH
 
       - name: Build mod
-        run: geode build -- --no-cross
+        run: geode build
 
       - name: Upload .geode file
         uses: actions/upload-artifact@v4
