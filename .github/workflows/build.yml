@@ -21,9 +21,9 @@ jobs:
           sudo apt update
           sudo apt install -y clang make cmake unzip wget
 
-      - name: Download Geode CLI
+      - name: Download Geode CLI v3.6.0
         run: |
-          wget https://github.com/geode-sdk/cli/releases/download/v3.7.0/geode-cli-linux.zip -O geode-cli.zip
+          wget https://github.com/geode-sdk/cli/releases/download/v3.6.0/geode-cli-linux.zip -O geode-cli.zip
           unzip geode-cli.zip
           chmod +x geode
           sudo mv geode /usr/local/bin/
