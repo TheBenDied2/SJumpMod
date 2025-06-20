@@ -9,19 +9,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
 
       - name: Install dependencies
-        run: sudo apt-get install -y cmake g++ libcurl4-openssl-dev
+        run: sudo apt-get update && sudo apt-get install -y cmake g++ libcurl4-openssl-dev
 
-      - name: Install Geode SDK
+      - name: Install and build Geode mod
         run: |
           curl -fsSL https://geode-sdk.org/install.sh | bash
-          source ~/.bashrc
-
-      - name: Build mod
-        run: geode build
-
+          source $HOME/.bashrc
+          geode build
+          
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
