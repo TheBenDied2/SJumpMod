@@ -23,13 +23,13 @@ This mod adds the ability to jump by pressing the S key.
 
 ### Скачать мод
 
-[Скачать SJumpMod.geode](тут_вставьте_ссылку_на_файл)
+Поищите на этой репестатории
 
 ---
 
 ### Контакты
 
-- Discord: TheBenDied2#XXXX  
+- Discord: robminecraft
 - GitHub: [https://github.com/TheBenDied2](https://github.com/TheBenDied2)
 
 ---
